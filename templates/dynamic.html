@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block content %}	
+{% if results %}
+	{% for x in results %}
+		<strong>Reciepe: </strong><p>{{ x['title'] }}</p> <strong>Ingredients: </strong><p>{{ x['ingredients'] }
+		</p> <br>
+				{% endfor %}
+{%  endif %}
+{% endblock %}

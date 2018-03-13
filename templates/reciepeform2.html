@@ -1,0 +1,47 @@
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	
+	{% extends 'base.html' %}
+	
+	{% block content1 %}
+	
+		<form action="/reciepeform2" method="POST">
+			{{ form.search.label() }}{{ form.search() }}<br>
+			{{ form.number.label }} {{ form.number() }}<br>
+			{{ form.submit() }}
+			{{ form.hidden_tag() }}
+		</form>
+		<br>
+		<br>
+	
+	
+	
+		{% if results %}
+			{% for x in results %}
+				<strong>Reciepe: </strong><p>{{ x[0] }}</p> <strong>Ingredients: </strong><p>{{ x[1] }}</p>
+				<strong>Link: </strong><a href={{ x[2] }}>{{ x[2] }}</a> <br><br>
+			{% endfor %}
+		
+		{% endif %}
+		{% if nothing %}
+			<div>No search previous searches matched</div>
+		{% endif %}	
+		
+		<div>
+		{% for message in get_flashed_messages() %}
+			<strong>{{ message }}</strong>
+		{% endfor %}
+		</div>
+		
+	{% endblock %}
+
+		
+	</body>
+</html>
