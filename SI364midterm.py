@@ -80,6 +80,7 @@ def validatesearch(self, field):
             if x[-1] != ",":
         
                 raise ValidationError("Ingredients must be separated with commas")
+                #custom validation to make sure words are separated with a comma
 
 
 class ReciepeForm1(FlaskForm):
@@ -111,7 +112,7 @@ def home():
     
 @app.route('/reciepeform1', methods=["GET","POST"])
 def reciepe_form1():
-    form = ReciepeForm1()
+    form = ReciepeForm1() #GET form
     if form.validate_on_submit():
         
         return redirect(url_for('displayData'))
@@ -134,7 +135,7 @@ def displayData():
         r = requests.get(baseurl, params = params)
         data = r.json()
     
-        new_search = IngredientSearched.query.filter_by(ingredientssearch = ingredients).first()
+        new_search = IngredientSearched.query.filter_by(ingredientssearch = ingredients).first() #checks if exists in database first
         if not new_search:
     
             new_search = IngredientSearched(ingredientssearch = ingredients)
