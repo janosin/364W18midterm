@@ -5,8 +5,8 @@
 
 {% block content1 %}
 
-<form action="{{ url_for('displayData') }}" method="GET">
-	{{ form.search.label() }}{{ form.search() }}<br>
+<form action="{{ url_for('displayData') }}" method="POST">
+	{{ form.rating.label() }}{{ form.rating() }}<br>
 	{{ form.submit() }}
 	{{ form.hidden_tag() }}
 </form>
